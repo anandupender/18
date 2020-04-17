@@ -14,7 +14,15 @@
     height:75vw;
     padding:25px;
     border-radius: 20px;
-    display:none; 
+    /* display:none;  */
+    transform: translateX(100vw);
+    transition: transform ease 1s;
+    transition-delay: 1s;
+}
+
+#card.visible{
+    display: flex;
+    transform: translateX(0);
 }
 
 #date{
@@ -60,6 +68,21 @@ button{
     margin: 4px 2px;
     border-radius: 4px;
   }
+
+  #footer{
+      position: absolute;
+      bottom:30px;
+    font-family: 'Indie Flower', cursive;
+    font-size: 14px;
+    opacity:0;
+
+    animation: 1.5s ease 1s normal forwards 1 fadein;
+  }
+
+  @keyframes fadein{
+    0% { opacity:0; }
+    100% { opacity:1; }
+}
 
 /* This applies from 600px onwards */
 @media (min-width: 600px) {

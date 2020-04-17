@@ -1,6 +1,6 @@
 let tipIterator = 0;
 let storage;
-const lolPassword = "anandsthebest"
+const lolPassword = "anandisthebest"
 var d = new Date();
 const days = [
     'Sunday',
@@ -31,13 +31,18 @@ const days = [
 "man"];
 const colors = [{"bg":"#202040","text":"#ff6363"},{"bg":"#543864","text":"#ffffff"},{"bg":"#ff6363","text":"#000000"},{"bg":"#ffbd69","text":"#000000"}];
 
-let tips = ["I'd spend more time at the pool", "tip 2"];
+let tips = ["You can treat yourself on your birthday as much as others treat you", 
+"The “adults” don’t have it anymore figured out than us",
+"Life is messy, the messiness makes us human",
+"Self-care is an active practice",
+"Love brings out our most beautiful and fragile sides",
+"The world needs more compliments, share appreciation of others often",
+"Your self-worth is not dependent on your number of side projects"];
 
 window.onload = function(){
     storage = window.localStorage;
 
     if(storage.getItem("nav-password") == lolPassword){
-        displayTips();
         if(storage.getItem("nav-iterator") === null){
             storage.setItem("nav-iterator", tipIterator);
             console.log("no login found");
@@ -61,6 +66,7 @@ window.onload = function(){
 
         storage.setItem("nav-lastMonth",d.getMonth());
         storage.setItem("nav-lastDay",d.getDate());
+        displayTips();
     }else{
         displayWall();
     }
@@ -74,10 +80,15 @@ function displayWall(){
       console.log("Saving value", form.elements.pwd.value);
       attemptedPass = form.elements.pwd.value;
       event.preventDefault();
+
+      //first login!
       if(attemptedPass == lolPassword){
         displayTips();
         document.querySelector("#wall").style.display = "none";
         storage.setItem("nav-password",lolPassword)
+        storage.setItem("nav-lastMonth",d.getMonth());
+        storage.setItem("nav-lastDay",d.getDate());
+        storage.setItem("nav-iterator", tipIterator);
       }
     });
 
@@ -85,7 +96,10 @@ function displayWall(){
 
 // after password entered:
 function displayTips(){
-    document.querySelector("#card").style.display = "flex";
+    window.setTimeout(function(){
+        document.querySelector("#card").classList.add("visible");
+
+    },10);
     fillDate();
     fillTip();
     randomColors();
@@ -97,7 +111,7 @@ function fillDate(){
     var day = d.getDate();
 
     var dateObject = document.querySelector("#date");
-    dateObject.innerHTML = "If I was 18 on " + dayOfWeek + ", " + currMonth + " " + day + "...";
+    dateObject.innerHTML = "Yo! It's " + dayOfWeek + ", " + currMonth + " " + day + ".";
 }
 
 function fillTip(){

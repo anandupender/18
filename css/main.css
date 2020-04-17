@@ -14,20 +14,18 @@
     height:75vw;
     padding:25px;
     border-radius: 20px;
-    /* display:none;  */
     transform: translateX(100vw);
     transition: transform ease 1s;
     transition-delay: 1s;
 }
 
 #card.visible{
-    display: flex;
     transform: translateX(0);
 }
 
 #date{
     font-size: 20px;
-    margin-bottom:30px;
+    margin-bottom:20px;
     font-family: 'Indie Flower', cursive;
 }
 
@@ -69,6 +67,14 @@ button{
     border-radius: 4px;
   }
 
+  #nav-image{
+      width:60vw;
+      position: absolute;
+      left:20vw;
+      top:5vh;
+      animation: 6s grow ease;
+  }
+
   #footer{
       position: absolute;
       bottom:30px;
@@ -76,13 +82,15 @@ button{
     font-size: 14px;
     opacity:0;
 
-    animation: 1.5s ease 1s normal forwards 1 fadein;
+    transition: opacity 1.5s ease 1s;
   }
 
-  @keyframes fadein{
-    0% { opacity:0; }
-    100% { opacity:1; }
-}
+  @keyframes grow{
+      0%{transform:scale(0)}
+      100%{transform:scale(1)}
+
+  }
+
 
 /* This applies from 600px onwards */
 @media (min-width: 600px) {

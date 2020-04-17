@@ -31,7 +31,8 @@ const days = [
 "man"];
 const colors = [{"bg":"#202040","text":"#ff6363"},{"bg":"#543864","text":"#ffffff"},{"bg":"#ff6363","text":"#000000"},{"bg":"#ffbd69","text":"#000000"}];
 
-let tips = ["You can treat yourself on your birthday as much as others treat you", 
+let tips = 
+["You can treat yourself on your birthday as much as others treat you", 
 "The “adults” don’t have it anymore figured out than us",
 "Life is messy, the messiness makes us human",
 "Self-care is an active practice",
@@ -74,6 +75,7 @@ window.onload = function(){
 
 function displayWall(){
     document.querySelector("#wall").style.display = "flex";
+    document.querySelector("#card").style.display = "none";
     var form = document.querySelector("form");
     let attemptedPass = "";
     form.addEventListener("submit", function(event) {
@@ -83,6 +85,7 @@ function displayWall(){
 
       //first login!
       if(attemptedPass == lolPassword){
+        document.querySelector("#card").style.display = "flex";
         displayTips();
         document.querySelector("#wall").style.display = "none";
         storage.setItem("nav-password",lolPassword)
@@ -98,7 +101,7 @@ function displayWall(){
 function displayTips(){
     window.setTimeout(function(){
         document.querySelector("#card").classList.add("visible");
-
+        document.querySelector("#footer").style.opacity = 1;
     },10);
     fillDate();
     fillTip();

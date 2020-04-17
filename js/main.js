@@ -1,6 +1,6 @@
 let tipIterator = 0;
 let storage;
-const lolPassword = "anandisthebest"
+const lolPassword = "anandsthebest"
 var d = new Date();
 const days = [
     'Sunday',
